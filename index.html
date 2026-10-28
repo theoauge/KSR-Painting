@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KSR Painting | Interior & Exterior Painting in Cook County, IL</title>
     <meta name="description" content="KSR Painting provides residential and commercial painting, staining, color matching, and drywall and plaster repair across Cook County, IL. Request a free estimate.">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d2124'/%3E%3Crect x='7' y='9' width='18' height='8' rx='2' fill='%23c8913a'/%3E%3Crect x='14' y='17' width='4' height='8' rx='1' fill='%23f6f2eb'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23121212'/%3E%3Crect x='7' y='9' width='18' height='8' rx='2' fill='%23a88a52'/%3E%3Crect x='14' y='17' width='4' height='8' rx='1' fill='%23f4f0e8'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script>document.documentElement.classList.add("js");</script>
     <script src="scripts.js" defer></script>
@@ -19,8 +19,11 @@
     <header class="site-header">
         <div class="container header-inner">
             <a href="#top" class="brand" aria-label="KSR Painting home">
-                <span class="brand-mark" aria-hidden="true"></span>
                 KSR Painting
+            </a>
+            <a class="header-call" data-contact-phone hidden>
+                <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+                <span class="sr-only">Call us</span>
             </a>
             <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
                 <span class="sr-only">Menu</span>
@@ -29,8 +32,12 @@
             <nav id="site-nav" class="site-nav">
                 <a href="#services">Services</a>
                 <a href="#work">Our Work</a>
-                <a href="#process">Process</a>
+                <a href="#reviews">Reviews</a>
                 <a href="#about">About</a>
+                <a class="nav-phone" data-contact-phone hidden>
+                    <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+                    <span data-phone-text></span>
+                </a>
                 <a href="#estimate" class="btn btn-primary btn-sm">Free Estimate</a>
             </nav>
         </div>
@@ -54,7 +61,7 @@
                 </div>
                 <div class="hero-media">
                     <img class="hero-img-main" src="portfolio/web/storefront.jpg" alt="Restaurant storefront freshly painted in bright cobalt blue with gold-trimmed panels" width="1600" height="900">
-                    <img class="hero-img-accent" src="portfolio/web/staircase-stain.jpg" alt="Oak staircase railing with a rich new stain" width="1600" height="900" loading="lazy">
+                    <img class="hero-img-accent" src="portfolio/web/staircase-stain.jpg" alt="Oak staircase railing with a rich new stain" width="1600" height="900">
                 </div>
             </div>
         </section>
@@ -78,30 +85,18 @@
                 </div>
                 <div class="service-grid">
                     <article class="service-card reveal">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M4 4h13v5H4zM17 6.5h3v5h-8.5V15"/><path d="M10 15h3v6h-3z"/></svg>
-                        </div>
                         <h3>Interior Painting</h3>
                         <p>Ceilings, walls, trim, and doors, with clean cut-in lines and even coverage.</p>
                     </article>
                     <article class="service-card reveal">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="4"/><circle cx="16" cy="9" r="4"/><circle cx="12" cy="15" r="4"/></svg>
-                        </div>
                         <h3>Color Matching</h3>
                         <p>Touch-ups and new coats that blend seamlessly with your existing finish.</p>
                     </article>
                     <article class="service-card reveal">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M3 20h18M6 20V8l6-4 6 4v12M10 20v-6h4v6"/></svg>
-                        </div>
                         <h3>Staining &amp; Clear Coats</h3>
                         <p>Wood staining and protective clear coats for railings, stairs, and trim.</p>
                     </article>
                     <article class="service-card reveal">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M14.5 4.5l5 5L9 20H4v-5z"/><path d="M12 7l5 5"/></svg>
-                        </div>
                         <h3>Home Repairs</h3>
                         <p>Drywall, wood, and plaster repair so the surface is right before paint goes on.</p>
                     </article>
@@ -142,35 +137,32 @@
             </div>
         </section>
 
-        <!-- Process -->
-        <section id="process" class="section">
+        <!-- Reviews -->
+        <section id="reviews" class="section">
             <div class="container">
                 <div class="section-head">
-                    <p class="eyebrow">How it works</p>
-                    <h2>A simple process, start to finish.</h2>
+                    <p class="eyebrow">Reviews</p>
+                    <h2>What our customers say.</h2>
                 </div>
-                <ol class="process-list">
-                    <li class="reveal">
-                        <span class="step-num">01</span>
-                        <h3>Walkthrough</h3>
-                        <p>We look at the space, talk colors and finishes, and note any repairs.</p>
-                    </li>
-                    <li class="reveal">
-                        <span class="step-num">02</span>
-                        <h3>Estimate</h3>
-                        <p>You get a clear, written quote with no surprises.</p>
-                    </li>
-                    <li class="reveal">
-                        <span class="step-num">03</span>
-                        <h3>Prep &amp; paint</h3>
-                        <p>We protect your space, repair surfaces, then paint with care.</p>
-                    </li>
-                    <li class="reveal">
-                        <span class="step-num">04</span>
-                        <h3>Final review</h3>
-                        <p>We walk the job with you and clean up before we leave.</p>
-                    </li>
-                </ol>
+                <div class="review-grid">
+                    <!-- One <figure class="review-card"> per review. Use the customer's exact words, with their OK to post them.
+                         Change the aria-label and the number of stars if a rating is under 5. -->
+                    <figure class="review-card reveal">
+                        <p class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+                        <blockquote><p>[Customer review goes here.]</p></blockquote>
+                        <figcaption><strong>[Customer name]</strong><span>[Project type, neighborhood]</span></figcaption>
+                    </figure>
+                    <figure class="review-card reveal">
+                        <p class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+                        <blockquote><p>[Customer review goes here.]</p></blockquote>
+                        <figcaption><strong>[Customer name]</strong><span>[Project type, neighborhood]</span></figcaption>
+                    </figure>
+                    <figure class="review-card reveal">
+                        <p class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
+                        <blockquote><p>[Customer review goes here.]</p></blockquote>
+                        <figcaption><strong>[Customer name]</strong><span>[Project type, neighborhood]</span></figcaption>
+                    </figure>
+                </div>
             </div>
         </section>
 
@@ -191,7 +183,7 @@
                         <figcaption><strong>Theo</strong><span>Co-founder</span></figcaption>
                     </figure>
                     <figure class="founder reveal">
-                        <div class="avatar avatar-alt" aria-hidden="true">E</div>
+                        <div class="avatar" aria-hidden="true">E</div>
                         <figcaption><strong>Emiliano</strong><span>Co-founder</span></figcaption>
                     </figure>
                 </div>
@@ -210,6 +202,10 @@
                             <span class="contact-label">Service area</span>
                             Cook County, IL
                         </li>
+                        <li data-phone-item hidden>
+                            <span class="contact-label">Phone</span>
+                            <a data-contact-phone><span data-phone-text></span></a>
+                        </li>
                         <li>
                             <span class="contact-label">Email</span>
                             <a href="mailto:info@ksrpainting.com" data-contact-email>info@ksrpainting.com</a>
@@ -220,36 +216,41 @@
                     <div class="field-row">
                         <label class="field">
                             <span>Name</span>
-                            <input type="text" name="name" autocomplete="name" required>
+                            <input type="text" name="name" autocomplete="name" required aria-describedby="form-status">
                         </label>
                         <label class="field">
-                            <span>Phone or email</span>
-                            <input type="text" name="contact" autocomplete="email" required>
+                            <span>Phone</span>
+                            <input type="tel" name="phone" autocomplete="tel" aria-describedby="form-status">
                         </label>
                     </div>
                     <div class="field-row">
                         <label class="field">
-                            <span>Project type</span>
-                            <select name="type">
-                                <option>Interior painting</option>
-                                <option>Exterior painting</option>
-                                <option>Staining / clear coat</option>
-                                <option>Repairs (drywall, wood, plaster)</option>
-                                <option>Commercial project</option>
-                                <option>Something else</option>
-                            </select>
+                            <span>Email</span>
+                            <input type="email" name="email" autocomplete="email" aria-describedby="form-status">
                         </label>
                         <label class="field">
                             <span>City / neighborhood</span>
                             <input type="text" name="location" autocomplete="address-level2">
                         </label>
                     </div>
+                    <p class="form-hint">We need your name and a phone number or email.</p>
+                    <label class="field">
+                        <span>Project type</span>
+                        <select name="type">
+                            <option>Interior painting</option>
+                            <option>Exterior painting</option>
+                            <option>Staining / clear coat</option>
+                            <option>Repairs (drywall, wood, plaster)</option>
+                            <option>Commercial project</option>
+                            <option>Something else</option>
+                        </select>
+                    </label>
                     <label class="field">
                         <span>Project details</span>
                         <textarea name="details" rows="4" placeholder="Rooms, rough size, timeline, anything we should know"></textarea>
                     </label>
                     <button type="submit" class="btn btn-primary btn-block">Send request</button>
-                    <p class="form-status" role="status" aria-live="polite"></p>
+                    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </section>
@@ -258,7 +259,6 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <a href="#top" class="brand brand-light">
-                <span class="brand-mark" aria-hidden="true"></span>
                 KSR Painting
             </a>
             <p>Happily serving Cook County, IL</p>

@@ -1,6 +1,10 @@
 // Where estimate requests are sent. Update this to the business inbox.
 const CONTACT_EMAIL = "info@ksrpainting.com";
 
+// Business phone, written how it should appear, e.g. "(312) 555-0123".
+// Leave empty to hide every call link on the page.
+const PHONE_NUMBER = "";
+
 // Footer year + contact email
 document.getElementById("year").textContent = new Date().getFullYear();
 document.querySelectorAll("[data-contact-email]").forEach((link) => {
@@ -8,13 +12,19 @@ document.querySelectorAll("[data-contact-email]").forEach((link) => {
   link.textContent = CONTACT_EMAIL;
 });
 
-// Header shadow on scroll
-const header = document.querySelector(".site-header");
-const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
-window.addEventListener("scroll", onScroll, { passive: true });
-onScroll();
+// Tap-to-call links stay hidden until a phone number is set
+if (PHONE_NUMBER) {
+  const tel = `tel:${PHONE_NUMBER.replace(/[^\d+]/g, "")}`;
+  document.querySelectorAll("[data-contact-phone]").forEach((link) => {
+    link.href = tel;
+    link.hidden = false;
+  });
+  document.querySelectorAll("[data-phone-text]").forEach((el) => (el.textContent = PHONE_NUMBER));
+  document.querySelectorAll("[data-phone-item]").forEach((el) => (el.hidden = false));
+}
 
 // Mobile nav
+const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.getElementById("site-nav");
 
@@ -27,6 +37,17 @@ navToggle.addEventListener("click", () => {
   setNavOpen(navToggle.getAttribute("aria-expanded") !== "true");
 });
 nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setNavOpen(false)));
+
+// Close the menu with Escape or a tap outside the header
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && nav.classList.contains("is-open")) {
+    setNavOpen(false);
+    navToggle.focus();
+  }
+});
+document.addEventListener("click", (e) => {
+  if (nav.classList.contains("is-open") && !header.contains(e.target)) setNavOpen(false);
+});
 
 // Reveal on scroll
 const revealEls = document.querySelectorAll(".reveal");
@@ -90,25 +111,36 @@ const status = form.querySelector(".form-status");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const data = new FormData(form);
-  let valid = true;
+  const { name, phone, email } = form.elements;
 
-  ["name", "contact"].forEach((name) => {
-    const field = form.elements[name];
-    const empty = !field.value.trim();
-    field.closest(".field").classList.toggle("has-error", empty);
-    if (empty) valid = false;
+  const noName = !name.value.trim();
+  const noContact = !phone.value.trim() && !email.value.trim();
+  const badEmail = !!email.value.trim() && !email.checkValidity();
+
+  const errors = new Map([
+    [name, noName],
+    [phone, noContact],
+    [email, noContact || badEmail],
+  ]);
+  errors.forEach((invalid, field) => {
+    field.closest(".field").classList.toggle("has-error", invalid);
+    field.setAttribute("aria-invalid", String(invalid));
   });
 
-  if (!valid) {
-    status.textContent = "Please add your name and a way to reach you.";
+  if (noName || noContact || badEmail) {
+    status.textContent = badEmail && !noName
+      ? "That email address doesn't look right. Please check it."
+      : "Please add your name and a phone number or email.";
     status.className = "form-status is-error";
+    [...errors].find(([, invalid]) => invalid)[0].focus();
     return;
   }
 
   const subject = `Estimate request: ${data.get("type")}`;
   const body = [
     `Name: ${data.get("name")}`,
-    `Contact: ${data.get("contact")}`,
+    `Phone: ${data.get("phone") || "-"}`,
+    `Email: ${data.get("email") || "-"}`,
     `Project type: ${data.get("type")}`,
     `Location: ${data.get("location") || "-"}`,
     "",
