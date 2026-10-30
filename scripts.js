@@ -68,6 +68,29 @@ if ("IntersectionObserver" in window) {
   revealEls.forEach((el) => el.classList.add("is-visible"));
 }
 
+// Service cards: before/after photos appear once both files exist; tap toggles on touch screens
+const imageLoaded = (img) =>
+  new Promise((resolve, reject) => {
+    if (img.complete) return img.naturalWidth ? resolve() : reject();
+    img.addEventListener("load", resolve, { once: true });
+    img.addEventListener("error", reject, { once: true });
+  });
+
+document.querySelectorAll(".service-photo").forEach((photo) => {
+  const imgs = [...photo.querySelectorAll("img")];
+  Promise.all(imgs.map(imageLoaded)).then(() => (photo.hidden = false), () => {});
+  photo.addEventListener("click", () => {
+    photo.setAttribute("aria-pressed", String(photo.getAttribute("aria-pressed") !== "true"));
+  });
+});
+
+// "Get a quote" links preselect the project type in the estimate form
+document.querySelectorAll("[data-project]").forEach((link) => {
+  link.addEventListener("click", () => {
+    document.querySelector('#estimate-form [name="type"]').value = link.dataset.project;
+  });
+});
+
 // Gallery lightbox
 const items = [...document.querySelectorAll(".gallery-item")];
 const lightbox = document.getElementById("lightbox");

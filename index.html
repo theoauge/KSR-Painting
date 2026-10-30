@@ -26,7 +26,7 @@
 
     <header class="site-header">
         <div class="container header-inner">
-            <a href="#top" class="brand" aria-label="KSR Painting home">
+            <a href="#main" class="brand" aria-label="KSR Painting home">
                 KSR Painting
             </a>
             <a class="header-call" data-contact-phone hidden>
@@ -38,8 +38,8 @@
                 <span class="nav-toggle-bar"></span>
             </button>
             <nav id="site-nav" class="site-nav">
-                <a href="#services">Services</a>
                 <a href="#work">Our Work</a>
+                <a href="#services">Services</a>
                 <a href="#reviews">Reviews</a>
                 <a href="#about">About</a>
                 <a class="nav-phone" data-contact-phone hidden>
@@ -52,53 +52,10 @@
     </header>
 
     <main id="main">
-        <!-- Hero -->
-        <section id="top" class="hero">
-            <div class="container hero-grid">
-                <div class="hero-copy">
-                    <p class="eyebrow">Residential &amp; Commercial Painting</p>
-                    <h1>Clean lines.<br>Lasting finishes.</h1>
-                    <p class="lead">
-                        From bedroom walls to restaurant storefronts, KSR Painting delivers careful prep,
-                        crisp edges, and finishes that hold up, all across Cook County, IL.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#estimate" class="btn btn-primary">Request a free estimate</a>
-                        <a href="#work" class="btn btn-ghost">See our work</a>
-                    </div>
-                </div>
-                <div class="hero-media">
-                    <img class="hero-img-main" src="portfolio/web/storefront.jpg" alt="Restaurant storefront freshly painted in bright cobalt blue with gold-trimmed panels" width="1600" height="900">
-                    <img class="hero-img-accent" src="portfolio/web/staircase-stain.jpg" alt="Oak staircase railing with a rich new stain" width="1600" height="900">
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section id="services" class="section">
+        <!-- Intro -->
+        <section class="intro">
             <div class="container">
-                <div class="section-head">
-                    <p class="eyebrow">What we do</p>
-                    <h2>Painting, finishing, and the repairs that come first.</h2>
-                </div>
-                <div class="service-grid">
-                    <article class="service-card reveal">
-                        <h3>Interior Painting</h3>
-                        <p>Ceilings, walls, trim, and doors, with clean cut-in lines and even coverage.</p>
-                    </article>
-                    <article class="service-card reveal">
-                        <h3>Color Matching</h3>
-                        <p>Touch-ups and new coats that blend seamlessly with your existing finish.</p>
-                    </article>
-                    <article class="service-card reveal">
-                        <h3>Staining &amp; Clear Coats</h3>
-                        <p>Wood staining and protective clear coats for railings, stairs, and trim.</p>
-                    </article>
-                    <article class="service-card reveal">
-                        <h3>Home Repairs</h3>
-                        <p>Drywall, wood, and plaster repair so the surface is right before paint goes on.</p>
-                    </article>
-                </div>
+                <h1 class="intro-title">Chicago Painters</h1>
             </div>
         </section>
 
@@ -112,7 +69,7 @@
                 </div>
                 <div class="gallery">
                     <button class="gallery-item gallery-item-wide reveal" data-index="0">
-                        <img src="portfolio/web/storefront.jpg" alt="Restaurant storefront painted cobalt blue with gold-trimmed panels" loading="lazy" width="1600" height="900">
+                        <img src="portfolio/web/storefront.jpg" alt="Restaurant storefront painted cobalt blue with gold-trimmed panels" width="1600" height="900">
                         <span class="gallery-caption"><strong>Restaurant Exterior</strong><span>Commercial</span></span>
                     </button>
                     <button class="gallery-item reveal" data-index="1">
@@ -131,6 +88,68 @@
                         <img src="portfolio/web/staircase-stain.jpg" alt="Oak staircase railing and balusters with a fresh stain" loading="lazy" width="1600" height="900">
                         <span class="gallery-caption"><strong>Stained Staircase</strong><span>Wood finishing</span></span>
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">What we do</p>
+                    <h2>Our Services</h2>
+                </div>
+                <div class="service-grid">
+                    <article class="service-card reveal">
+                        <!-- Shows automatically once both photos exist at these paths -->
+                        <button type="button" class="service-photo" aria-pressed="false" hidden>
+                            <img class="photo-before" src="portfolio/web/services/interior-before.jpg" alt="Interior painting before">
+                            <img class="photo-after" src="portfolio/web/services/interior-after.jpg" alt="Interior painting after">
+                            <span class="photo-tag"><span class="tag-before">Before</span><span class="tag-after">After</span></span>
+                        </button>
+                        <span class="service-swatch" aria-hidden="true"><span style="background: #c9cfe6"></span><span style="background: #7c88b8"></span><span style="background: #334076"></span></span>
+                        <h3>Painting</h3>
+                        <p>Interior & Exterior</p>
+                        <ul class="service-list">
+                            <li>Walls, Ceilings, Trim, Doors, Floors</li>
+                            <li>Color Matching</li>
+                            <li>Residential & Commerical Properties</li>
+                        </ul>
+                        <a href="#estimate" class="service-quote" data-project="Interior painting">Get a quote <span aria-hidden="true">&rarr;</span></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <!-- Shows automatically once both photos exist at these paths -->
+                        <button type="button" class="service-photo" aria-pressed="false" hidden>
+                            <img class="photo-before" src="portfolio/web/services/staining-before.jpg" alt="Staining before">
+                            <img class="photo-after" src="portfolio/web/services/staining-after.jpg" alt="Staining after">
+                            <span class="photo-tag"><span class="tag-before">Before</span><span class="tag-after">After</span></span>
+                        </button>
+                        <span class="service-swatch" aria-hidden="true"><span style="background: #c79a6b"></span><span style="background: #8a5a34"></span><span style="background: #4f2f1a"></span></span>
+                        <h3>Staining &amp; Clear Coats</h3>
+                        <p>Oil- or Water- based stain & clear finishes for wood.</p>
+                        <ul class="service-list">
+                            <li>Railings and Staircases</li>
+                            <li>Furniture</li>
+                        </ul>
+                        <a href="#estimate" class="service-quote" data-project="Staining / clear coat">Get a quote <span aria-hidden="true">&rarr;</span></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <!-- Shows automatically once both photos exist at these paths -->
+                        <button type="button" class="service-photo" aria-pressed="false" hidden>
+                            <img class="photo-before" src="portfolio/web/services/repairs-before.jpg" alt="Home repair before">
+                            <img class="photo-after" src="portfolio/web/services/repairs-after.jpg" alt="Home repair after">
+                            <span class="photo-tag"><span class="tag-before">Before</span><span class="tag-after">After</span></span>
+                        </button>
+                        <span class="service-swatch" aria-hidden="true"><span style="background: #ece7de"></span><span style="background: #cfc7b8"></span><span style="background: #a69d8c"></span></span>
+                        <h3>Home Decorating</h3>
+                        <p>Light Carptentry & Wall Repair</p>
+                        <ul class="service-list">
+                            <li>Drywall, Plaster, & Wood Repair</li>
+                            <li>Wall moulding</li>
+                            <li>Caulking</li>
+                        </ul>
+                        <a href="#estimate" class="service-quote" data-project="Repairs (drywall, wood, plaster)">Get a quote <span aria-hidden="true">&rarr;</span></a>
+                    </article>
                 </div>
             </div>
         </section>
@@ -237,6 +256,7 @@
                         <select name="type">
                             <option>Interior painting</option>
                             <option>Exterior painting</option>
+                            <option>Color matching</option>
                             <option>Staining / clear coat</option>
                             <option>Repairs (drywall, wood, plaster)</option>
                             <option>Commercial project</option>
@@ -256,7 +276,7 @@
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <a href="#top" class="brand brand-light">
+            <a href="#main" class="brand brand-light">
                 KSR Painting
             </a>
             <p>Happily serving Cook County, IL</p>
