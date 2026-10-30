@@ -10,6 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Style switch: ?style=luxury (the default, styles.css alone) or ?style=deco (adds previews/deco.css). -->
+    <script>
+        var styleOverlays = { luxury: null, deco: "previews/deco.css" };
+        var chosenStyle = styleOverlays[new URLSearchParams(location.search).get("style")];
+        if (chosenStyle) {
+            document.write('<link rel="stylesheet" href="' + chosenStyle + '">');
+        }
+    </script>
     <script>document.documentElement.classList.add("js");</script>
     <script src="scripts.js" defer></script>
 </head>
