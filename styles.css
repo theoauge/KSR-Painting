@@ -14,9 +14,6 @@
   --font-body: "Jost", "Futura", system-ui, sans-serif;
 
   --header-h: 72px;
-
-  /* One repeating row of paint drips, used as a mask under dark bands */
-  --drips: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 70'%3E%3Cpath d='M0 0H240V14H226C220 14 218 18 218 26V40C218 46 214 50 209 50C204 50 200 46 200 40V24C200 18 196 14 190 14H148C142 14 140 18 140 24V56C140 64 134 70 127 70C120 70 114 64 114 56V24C114 18 110 14 104 14H62C56 14 54 18 54 24V30C54 36 50 40 45 40C40 40 36 36 36 30V24C36 18 32 14 26 14H0Z'/%3E%3C/svg%3E");
 }
 
 /* ---------- Base ---------- */
@@ -89,7 +86,7 @@ a { color: inherit; }
   outline-offset: 3px;
 }
 
-/* Small tracked label with a hairline rule and a single gold drip hanging from it */
+/* Small tracked label led by a hairline rule */
 .eyebrow {
   display: flex;
   align-items: center;
@@ -104,12 +101,8 @@ a { color: inherit; }
 .eyebrow::before {
   content: "";
   flex: none;
-  width: 44px; height: 14px;
-  margin-bottom: -13px;
-  background:
-    linear-gradient(currentColor, currentColor) 0 0 / 100% 1px no-repeat,
-    linear-gradient(currentColor, currentColor) 32px 0 / 2px 11px no-repeat,
-    radial-gradient(circle at 50% 100%, currentColor 2.5px, transparent 3px) 30px 100% / 6px 14px no-repeat;
+  width: 44px; height: 1px;
+  background: currentColor;
 }
 
 .lead {
@@ -263,7 +256,6 @@ a { color: inherit; }
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 999px 999px 0 0;
 }
 
 .hero-img-accent {
@@ -276,61 +268,8 @@ a { color: inherit; }
   border: 10px solid var(--plaster);
 }
 
-/* ---------- Paint drips under the dark bands ---------- */
-.highlights,
-.section-dark { position: relative; }
-.highlights::after,
-.section-dark::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; top: calc(100% - 1px);
-  height: 70px;
-  background: var(--ink);
-  -webkit-mask: var(--drips) repeat-x 0 0 / 240px 70px;
-  mask: var(--drips) repeat-x 0 0 / 240px 70px;
-  z-index: 2;
-  pointer-events: none;
-}
-.section-dark::after {
-  background: var(--night);
-  -webkit-mask-position: 90px 0;
-  mask-position: 90px 0;
-}
-
-/* ---------- Highlights ---------- */
-.highlights {
-  background: var(--ink);
-  color: var(--plaster);
-}
-.highlight-list {
-  list-style: none;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.highlight-list li {
-  padding: 34px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  border-left: 1px solid rgba(244, 240, 232, 0.16);
-}
-.highlight-list li:first-child { border-left: 0; padding-left: 0; }
-.highlight-list strong { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; font-weight: 400; }
-.highlight-list span {
-  margin-top: 6px;
-  font-size: 0.66rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(244, 240, 232, 0.6);
-}
-
 /* ---------- Sections ---------- */
 .section { padding: clamp(80px, 11vw, 160px) 0; }
-
-/* Room for the drips hanging into these sections */
-#services,
-#reviews { padding-top: clamp(120px, 13vw, 190px); }
 
 .section-head { max-width: 760px; margin-bottom: clamp(44px, 6vw, 80px); }
 .section-sub { color: var(--ink-soft); margin: 0; font-size: 0.9rem; }
@@ -385,8 +324,6 @@ a { color: inherit; }
 @media (min-width: 961px) {
   .gallery-item:last-child { grid-column: span 2; }
 }
-.gallery-item:nth-child(2),
-.gallery-item:nth-child(4) { border-radius: 999px 999px 0 0; }
 
 .gallery-item img {
   width: 100%;
@@ -463,8 +400,7 @@ a { color: inherit; }
   margin: 0;
   flex: 1 1 160px;
   border: 1px solid var(--line);
-  border-radius: 999px 999px 0 0;
-  padding: 56px 20px 32px;
+  padding: 40px 20px 32px;
   text-align: center;
 }
 .founder figcaption { display: flex; flex-direction: column; }
@@ -476,12 +412,11 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 
-/* Initial in an arch frame */
+/* Initial in a thin frame */
 .avatar {
   width: 72px; height: 88px;
   margin: 0 auto 14px;
   border: 1px solid var(--ink);
-  border-radius: 999px 999px 0 0;
   display: grid;
   place-items: center;
   font-family: var(--font-display);
