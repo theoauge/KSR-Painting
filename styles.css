@@ -545,7 +545,9 @@ a { color: inherit; }
   outline: none;
   border-color: var(--brass);
 }
-.field.has-error input { border-color: #b3412e; }
+.field.has-error input,
+.field.has-error select,
+.field.has-error textarea { border-color: #b3412e; }
 
 .form-hint { margin: -4px 0 0; font-size: 0.82rem; color: var(--ink-soft); }
 

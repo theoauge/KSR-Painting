@@ -139,28 +139,25 @@ const submitButton = form.querySelector('button[type="submit"]');
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = new FormData(form);
-  const { name, phone, email } = form.elements;
+  const fields = ["name", "phone", "email", "location", "type", "details"].map((n) => form.elements[n]);
+  const { email } = form.elements;
 
-  const noName = !name.value.trim();
-  const noContact = !phone.value.trim() && !email.value.trim();
+  const empty = fields.filter((field) => !field.value.trim());
   const badEmail = !!email.value.trim() && !email.checkValidity();
+  const invalid = new Set(empty);
+  if (badEmail) invalid.add(email);
 
-  const errors = new Map([
-    [name, noName],
-    [phone, noContact],
-    [email, noContact || badEmail],
-  ]);
-  errors.forEach((invalid, field) => {
-    field.closest(".field").classList.toggle("has-error", invalid);
-    field.setAttribute("aria-invalid", String(invalid));
+  fields.forEach((field) => {
+    field.closest(".field").classList.toggle("has-error", invalid.has(field));
+    field.setAttribute("aria-invalid", String(invalid.has(field)));
   });
 
-  if (noName || noContact || badEmail) {
-    status.textContent = badEmail && !noName
-      ? "That email address doesn't look right. Please check it."
-      : "Please add your name and a phone number or email.";
+  if (invalid.size) {
+    status.textContent = empty.length
+      ? "Please fill in every field."
+      : "That email address doesn't look right. Please check it.";
     status.className = "form-status is-error";
-    [...errors].find(([, invalid]) => invalid)[0].focus();
+    fields.find((field) => invalid.has(field)).focus();
     return;
   }
 
