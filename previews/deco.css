@@ -41,6 +41,7 @@ h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.08; }
 h3 { font-size: 1.25rem; letter-spacing: 0.08em; }
 
 /* Divider under every section heading */
+
 .section-head h2::after,
 .about-grid h2::after,
 .estimate-copy h2::after {
@@ -50,10 +51,6 @@ h3 { font-size: 1.25rem; letter-spacing: 0.08em; }
   margin: 22px auto 0;
   background: var(--divider) no-repeat;
 }
-
-.eyebrow { color: var(--jewel); }
-.eyebrow::before,
-.eyebrow::after { height: 5px; background: none; border-block: 1px solid var(--brass); }
 
 /* Sunburst in metallic gold */
 .intro::before { background: repeating-conic-gradient(rgba(201, 162, 77, 0.38) 0 1.2deg, transparent 1.2deg 7.5deg); }
@@ -93,15 +90,6 @@ h3 { font-size: 1.25rem; letter-spacing: 0.08em; }
 
 /* ---------- Services: blue diamonds ---------- */
 .service-card { border-top: 3px double var(--brass); text-align: center; }
-.service-card::before {
-  content: "";
-  width: 14px; height: 14px;
-  margin: 6px auto 34px;
-  background: var(--jewel);
-  outline: 1px solid var(--brass);
-  outline-offset: 3px;
-  rotate: 45deg;
-}
 
 .service-swatch { margin-inline: auto; }
 .service-quote { align-self: center; }
@@ -127,11 +115,7 @@ h3 { font-size: 1.25rem; letter-spacing: 0.08em; }
   align-items: center;
   position: relative;
 }
-.review-card::before {
-  content: "\201C";
-  font: 4.5rem/0.6 var(--font-display);
-  color: var(--brass);
-}
+
 .review-stars { color: var(--jewel); }
 .review-card blockquote p { font: 300 1.1rem/1.6 var(--font-body); letter-spacing: 0.01em; }
 
