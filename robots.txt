@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ksrpainting.com/sitemap.xml
+Sitemap: https://theoauge.github.io/KSR-Painting/sitemap.xml
