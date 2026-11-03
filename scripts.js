@@ -6,7 +6,7 @@ const CONTACT_EMAIL = "theo.ksrpainting@gmail.com";
 
 // Business phone, written how it should appear, e.g. "(312) 555-0123".
 // Leave empty to hide every call link on the page.
-const PHONE_NUMBER = "(###) - ### - ####";
+const PHONE_NUMBER = "";
 
 // Footer year + contact email
 document.getElementById("year").textContent = new Date().getFullYear();
