@@ -1,19 +1,32 @@
 /* ---------- Tokens ---------- */
 :root {
-  --plaster: #f4f0e8;
-  --plaster-deep: #ebe5d9;
-  --ink: #121212;
-  --ink-soft: #5b5850;
-  --night: #0d0d0d;
-  --line: #cfc6b4;
-  --brass: #a88a52;
-  --brass-hover: #8c7140;
-  --white: #faf8f3;
+  --plaster: #f3ecdd;
+  --plaster-deep: #e9dfca;
+  --ink: #0f0f10;
+  --night: #0b0b0c;
+  --line: #d6c49a;
+  --brass: #c9a24d;
+  --brass-hover: #a8843a;
+  /* Closest to Benjamin Moore Starry Night Blue 2067-20 */
+  --jewel: #334076;
+  --jewel-deep: #263059;
+  --white: #fbf7ee;
 
-  --font-display: "Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
+  --ink-soft: #5b5850;
+
+  --font-display: "Poiret One", "Jost", sans-serif;
   --font-body: "Jost", "Futura", system-ui, sans-serif;
 
   --header-h: 72px;
+
+  /* Stepped (ziggurat) corners */
+  --step: polygon(24px 0, calc(100% - 24px) 0, calc(100% - 24px) 12px, calc(100% - 12px) 12px, calc(100% - 12px) 24px, 100% 24px, 100% calc(100% - 24px), calc(100% - 12px) calc(100% - 24px), calc(100% - 12px) calc(100% - 12px), calc(100% - 24px) calc(100% - 12px), calc(100% - 24px) 100%, 24px 100%, 24px calc(100% - 12px), 12px calc(100% - 12px), 12px calc(100% - 24px), 0 calc(100% - 24px), 0 24px, 12px 24px, 12px 12px, 24px 12px);
+
+  /* Gold fans, tiled on dark bands */
+  --fans: radial-gradient(circle at 50% 100%, transparent 13px, rgba(201, 162, 77, 0.16) 14px 15px, transparent 16px 23px, rgba(201, 162, 77, 0.16) 24px 25px, transparent 26px) 0 0 / 56px 28px;
+
+  /* Double gold rule with a blue diamond */
+  --divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='12'%3E%3Cpath d='M0 4H58M0 8H58M82 4H140M82 8H140' stroke='%23c9a24d'/%3E%3Cpath d='M70 0L76 6L70 12L64 6Z' fill='%23334076' stroke='%23c9a24d'/%3E%3C/svg%3E");
 }
 
 /* ---------- Base ---------- */
@@ -672,4 +685,124 @@ a { color: inherit; }
   .gallery-item-wide { grid-column: auto; grid-row: auto; }
 
   .lightbox-nav { top: auto; bottom: 24px; transform: none; }
+}
+
+/* ==========================================================
+   Art Deco layer: geometric caps, metallic gold with a Starry
+   Night Blue accent, stepped corners, double rules with a
+   diamond, gold fans on the dark bands. Kept last so it wins
+   over the base rules above.
+   ========================================================== */
+
+h1, h2, h3 {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+h1 { font-size: clamp(2.8rem, 6.6vw, 5.6rem); line-height: 1.02; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.08; }
+h3 { font-size: 1.25rem; letter-spacing: 0.08em; }
+
+/* Divider under every section heading */
+
+.section-head h2::after,
+.about-grid h2::after,
+.estimate-copy h2::after {
+  content: "";
+  display: block;
+  width: 140px; height: 12px;
+  margin: 22px auto 0;
+  background: var(--divider) no-repeat;
+}
+
+/* Sunburst in metallic gold */
+.intro::before { background: repeating-conic-gradient(rgba(201, 162, 77, 0.38) 0 1.2deg, transparent 1.2deg 7.5deg); }
+
+/* ---------- Buttons: blue with a double gold outline ---------- */
+.btn-primary {
+  background: var(--jewel);
+  color: var(--white);
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--plaster), 0 0 0 4px var(--brass);
+}
+.btn-primary:hover { background: var(--jewel-deep); }
+.btn-ghost { border-color: var(--brass); }
+.btn-ghost:hover { background: var(--ink); color: var(--brass); }
+.site-header .btn-primary { box-shadow: 0 0 0 3px var(--ink), 0 0 0 4px var(--brass); }
+
+/* ---------- Header: black and gold ---------- */
+.site-header { background: rgba(15, 15, 16, 0.97); border-bottom: 3px double var(--brass); }
+.brand { color: var(--brass); font-family: var(--font-display); letter-spacing: 0.28em; }
+.site-nav a:not(.btn) { color: rgba(243, 236, 221, 0.75); }
+.site-nav a:not(.btn):hover,
+.site-nav a.nav-phone { color: var(--white); }
+.nav-toggle-bar,
+.nav-toggle-bar::before,
+.nav-toggle-bar::after { background: var(--brass); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar { background: transparent; }
+.header-call { border-color: var(--brass); color: var(--brass); }
+
+/* ---------- Dark bands get gold fans ---------- */
+.highlights,
+.section-dark { background: var(--fans), var(--night); }
+.highlights { border-block: 3px double var(--brass); }
+.highlight-list strong { font-family: var(--font-display); font-style: normal; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brass); }
+
+.section-dark h2 { color: var(--brass); }
+.section-dark .eyebrow { color: #9aa8e0; }
+
+/* ---------- Services: blue diamonds ---------- */
+.service-card { border-top: 3px double var(--brass); text-align: center; }
+
+.service-swatch { margin-inline: auto; }
+.service-quote { align-self: center; }
+.service-photo { clip-path: var(--step); }
+
+/* ---------- Gallery: stepped photos with an inner gold frame ---------- */
+.gallery-item { clip-path: var(--step); }
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(201, 162, 77, 0.85);
+  pointer-events: none;
+}
+.gallery-caption { padding: 60px 30px 28px; }
+.gallery-caption strong { font-style: normal; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brass); }
+
+/* ---------- Reviews: centered, framed, with Deco quote marks ---------- */
+.review-card {
+  border: 1px solid var(--line);
+  padding: 32px 28px;
+  text-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.review-stars { color: var(--jewel); }
+.review-card blockquote p { font: 300 1.1rem/1.6 var(--font-body); letter-spacing: 0.01em; }
+
+/* ---------- About: initials in a gold double ring ---------- */
+.founder { border-color: var(--brass); clip-path: var(--step); background: var(--white); }
+.avatar {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  border: 4px double var(--brass);
+  color: var(--jewel);
+  font-style: normal;
+}
+
+/* ---------- Estimate ---------- */
+.estimate-form { border: 3px double var(--brass); }
+.field input:focus,
+.field select:focus,
+.field textarea:focus { border-color: var(--jewel); }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--fans), var(--night); border-top: 3px double var(--brass); }
+.brand-light { color: var(--brass); }
+
+@media (max-width: 760px) {
+  .site-nav { background: var(--ink); border-bottom: 3px double var(--brass); }
+  .site-nav a:not(.btn) { border-bottom-color: rgba(201, 162, 77, 0.3); }
 }
