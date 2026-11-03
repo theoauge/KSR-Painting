@@ -1,4 +1,7 @@
-// Where estimate requests are sent. Update this to the business inbox.
+// Formspree form that receives estimate requests (manage it at formspree.io)
+const FORM_ENDPOINT = "https://formspree.io/f/xnpplqvg";
+
+// Business email shown on the page
 const CONTACT_EMAIL = "theo.ksrpainting@gmail.com";
 
 // Business phone, written how it should appear, e.g. "(312) 555-0123".
@@ -127,11 +130,13 @@ lightbox.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") showPhoto(current + 1);
 });
 
-// Estimate form: validates, then opens the visitor's email app with the details filled in.
+// Estimate form: validates, then sends the request to Formspree without leaving the page.
 const form = document.getElementById("estimate-form");
 const status = form.querySelector(".form-status");
 
-form.addEventListener("submit", (e) => {
+const submitButton = form.querySelector('button[type="submit"]');
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = new FormData(form);
   const { name, phone, email } = form.elements;
@@ -159,18 +164,25 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  const subject = `Estimate request: ${data.get("type")}`;
-  const body = [
-    `Name: ${data.get("name")}`,
-    `Phone: ${data.get("phone") || "-"}`,
-    `Email: ${data.get("email") || "-"}`,
-    `Project type: ${data.get("type")}`,
-    `Location: ${data.get("location") || "-"}`,
-    "",
-    data.get("details") || "",
-  ].join("\n");
+  data.set("_subject", `Estimate request: ${data.get("type")}`);
+  submitButton.disabled = true;
+  status.textContent = "Sending your request...";
+  status.className = "form-status";
 
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  status.textContent = "Your email app should open with your request ready to send.";
-  status.className = "form-status is-success";
+  try {
+    const response = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) throw new Error(`Formspree responded ${response.status}`);
+    form.reset();
+    status.textContent = "Thanks! We got your request and will be in touch soon.";
+    status.className = "form-status is-success";
+  } catch {
+    status.textContent = `Something went wrong sending your request. Please try again, or email us at ${CONTACT_EMAIL}.`;
+    status.className = "form-status is-error";
+  } finally {
+    submitButton.disabled = false;
+  }
 });

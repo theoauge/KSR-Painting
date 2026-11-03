@@ -1,6 +1,8 @@
 # Estimate form: service options
 
-Status: **undecided** (saved 2026-10-28 to revisit later).
+Status: **decided 2026-11-03: Formspree** (`https://formspree.io/f/xnpplqvg`), because the
+site will be hosted on GitHub Pages, which rules out Netlify Forms. The form posts to Formspree
+with `fetch` in `scripts.js`; the original comparison is kept below for reference.
 
 Right now the estimate form opens the visitor's email app with the request filled in
 (`mailto:` in `scripts.js`). Visitors who only use webmail (Gmail in a browser, etc.) have

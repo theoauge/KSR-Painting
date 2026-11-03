@@ -217,7 +217,9 @@
                         </li>
                     </ul>
                 </div>
-                <form class="estimate-form" id="estimate-form" novalidate>
+                <form class="estimate-form" id="estimate-form" action="https://formspree.io/f/xnpplqvg" method="POST" novalidate>
+                    <!-- Spam trap: hidden from people, bots fill it in and Formspree discards those -->
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display: none">
                     <div class="field-row">
                         <label class="field">
                             <span>Name</span>
